@@ -24,5 +24,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+        button = (Button)findViewById(R.id.spoergskemaKnap);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i2 = new Intent(getApplicationContext(), Spoergeskema.class);
+                startActivity(i2);
+            }
+        });
+
     }
 }

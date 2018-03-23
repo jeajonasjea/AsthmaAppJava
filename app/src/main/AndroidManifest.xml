@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".notification_Activity"></activity>
+        <activity android:name=".notification_Activity" />
+        <activity android:name=".Spoergeskema"></activity>
     </application>
 
 </manifest>
