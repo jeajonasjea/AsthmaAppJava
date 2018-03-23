@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AsthmaApp</string>
+    <string name="title_activity_notification_2">notification_Activity2</string>
 </resources>
