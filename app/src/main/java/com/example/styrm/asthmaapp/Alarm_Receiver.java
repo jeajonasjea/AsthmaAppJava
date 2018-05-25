@@ -12,12 +12,12 @@ import android.util.Log;
 public class Alarm_Receiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-     //   String state = intent.getExtras().getString("extra");
-       // Log.e("MyActivity", "In the receiver with " + state);
+        String state = intent.getExtras().getString("extra");
+        Log.e("MyActivity", "In the receiver with " + state);
 
-        //Intent serviceIntent = new Intent(context,RingtonePlayingService.class);
+        Intent serviceIntent = new Intent(context,RingTonePlayingService.class);
         //serviceIntent.putExtra("extra", state);
 
-        //context.startService(serviceIntent);
+        context.startService(serviceIntent);
     }
 }

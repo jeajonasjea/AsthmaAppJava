@@ -17,7 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".notification_Activity" />
-        <activity android:name=".Spoergeskema"></activity>
+        <activity android:name=".Spoergeskema"/>
+        <receiver android:name=".Alarm_Receiver"/>
+        <service android:name="RingTonePlayingService"
+            android:enabled="true"/>
     </application>
 
 </manifest>

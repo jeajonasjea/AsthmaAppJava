@@ -1,7 +1,9 @@
 package com.example.styrm.asthmaapp;
 
 import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,7 @@ public class notification_Activity extends AppCompatActivity {
     TimePicker time_picker;
     TextView update_text;
     Context context;
+    PendingIntent pending_intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +32,13 @@ public class notification_Activity extends AppCompatActivity {
 
         update_text = (TextView) findViewById(R.id.updateText);
 
+
         final Calendar calender = Calendar.getInstance();
 
+        final Intent My_intent = new Intent(this.context, Alarm_Receiver.class);
 
         Button alarm_on = (Button) findViewById(R.id.alarmOn);
+
         alarm_on.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +61,10 @@ public class notification_Activity extends AppCompatActivity {
                 }
 
                     set_alarm_text("alarm set to: " + hour_string +":" + minute_string);
+
+                        pending_intent = PendingIntent.getBroadcast(notification_Activity.this,0, My_intent,PendingIntent.FLAG_UPDATE_CURRENT);
+
+                        alarm_manager.set(AlarmManager.RTC_WAKEUP, calender.getTimeInMillis(), pending_intent);
             }
         });
 
@@ -62,10 +72,12 @@ public class notification_Activity extends AppCompatActivity {
         alarm_off.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                set_alarm_text("alarm off");
 
+                set_alarm_text("alarm off");
+                alarm_manager.cancel(pending_intent);
             }
         });
+
     }
 
     private void set_alarm_text(String output) {
